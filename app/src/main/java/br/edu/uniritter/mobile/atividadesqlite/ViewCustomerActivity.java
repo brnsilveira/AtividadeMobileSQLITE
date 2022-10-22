@@ -26,6 +26,7 @@ public class ViewCustomerActivity extends AppCompatActivity {
 
         if(customerModelClasses.size() > 0) {
             CustomerAdapterClass customeradapterclass = new CustomerAdapterClass(customerModelClasses, ViewCustomerActivity.this);
+            recyclerView.setAdapter(customeradapterclass);
 
         } else {
             Toast.makeText(this, "There is no customer in the database", Toast.LENGTH_SHORT).show();

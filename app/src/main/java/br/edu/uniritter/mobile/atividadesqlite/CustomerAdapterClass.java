@@ -4,6 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,17 +36,34 @@ public class CustomerAdapterClass extends RecyclerView.Adapter<CustomerAdapterCl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final CustomerModelClass customerModelClass = customer.get(position);
+
+        holder.textViewID.setText(Integer.toString(customerModelClass.getId()));
+        holder.editText_Name.setText(customerModelClass.getName());
+        holder.editText_Email.setText(customerModelClass.getEmail());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return customer.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewID;
+        EditText editText_Name;
+        EditText editText_Email;
+        Button button_Edit;
+        Button button_delete;
+
         public ViewHolder (@NonNull View itemView) {
             super(itemView);
+
+            textViewID = itemView.findViewById(R.id.text_id);
+            editText_Name = itemView.findViewById(R.id.edittext_name);
+            editText_Email = itemView.findViewById(R.id.edittext_email);
+            button_delete = itemView.findViewById(R.id.button_delete);
+            button_Edit = itemView.findViewById(R.id.button_edit);
         }
     }
 }
